@@ -123,10 +123,12 @@ static ld::VersionSet mapPlatform(tapi::Platform platform, bool useSimulatorVari
 	case tapi::Platform::iOSMac:
 		platforms.insert(ld::Platform::iOSMac);
 		break;
+#if 0
 	case tapi::Platform::zippered:
 		platforms.insert(ld::Platform::macOS);
 		platforms.insert(ld::Platform::iOSMac);
 		break;
+#endif
 	#endif
 	#if ((TAPI_API_VERSION_MAJOR == 1 &&  TAPI_API_VERSION_MINOR >= 5) || (TAPI_API_VERSION_MAJOR > 1))
 	case tapi::Platform::DriverKit:
