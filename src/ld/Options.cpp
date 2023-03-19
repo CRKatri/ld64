@@ -4479,7 +4479,6 @@ void Options::buildSearchPaths(int argc, const char* argv[])
 					}
 					else {
 						fLibrarySearchPaths.push_back(strdup(newPath));
-						sdkOverride = true;
 					}
 				}
 			}
@@ -4533,7 +4532,6 @@ void Options::buildSearchPaths(int argc, const char* argv[])
 					}
 					else {
 						fFrameworkSearchPaths.push_back(strdup(newPath));
-						sdkOverride = true;
 					}
 				}
 			}
@@ -5919,9 +5917,9 @@ void Options::reconfigureDefaults()
 	else {
 		// <rdar://problem/51911409> ad-hoc sign all userland arm64 macOS binaries
 		// <rdar://problem/66740790> ad-hoc sign all userland arm64 simulator binaries
+		// CRKatri: We actually want to codesign all arm64 binaries
 		if ( dyldLoadsOutput() && (fArchitecture == CPU_TYPE_ARM64) ) {
-			if ( platforms().contains(ld::Platform::macOS) || platforms().contains(ld::simulatorPlatforms) )
-				fAdHocSign = true;
+			fAdHocSign = true;
 		}
 	}
 
